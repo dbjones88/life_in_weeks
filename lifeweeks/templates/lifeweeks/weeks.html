@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Your {{ lifeExpentancy }} year life in weeks</title>
+    <link rel="stylesheet" href="{% static 'lifeweeks/lifeweeks.css' %}">
+</head>
+
+<body>
+
+
+    <div class="legend-txt">
+        <h3>Each square represents 1 week of your life - scroll down to see.</h3>
+        <h4>Total weeks in your expected life span {{ lifeInWeeks }}</h4>
+        <h4>Age in weeks {{ currentWeeks }}</h4>
+        <h4>{{ remainingweeks }} weeks until age {{ lifeExpentancy }}</h4>
+        <h4>you have {{ wksToRetire }} Weeks until retirement at {{ retireAge }}</h4>
+    </div>
+
+    <div id="top" class="legend">
+        <div class="wkdivlegend" style="background-color: #A6D3FF;"><span> Under 18</span></div>
+        <div class="wkdivlegend" style="background-color: #FFC68C;"><span> Under 21</span></div>
+        <div class="wkdivlegend" style="background-color: blue;"><span style="color: white;"> Working Life</span></div>
+        <div class="wkdivlegend" style="background-color: #FF9C9C;"><span> Weeks until retirement</span></div>
+        <div class="wkdivlegend" style="background-color: #C8B5DA;"><span> Weeks after retirement</span></div>
+    </div>
+
+
+
+    <div class="container-weeks">
+        {% for week in listweeks %}
+        <div class="wkdiv" style="background-color:{{ week.color }};"></div>
+        {% endfor %}
+    </div>
+
+    <h2>What will you do with your remaining weeks?</h2>
+    <p>Inspired By <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">This Blog</a> By Tim
+        Urban</p>
+
+
+    <a href="{% url 'home' %}" class="btn">Start Over</a>
+
+</body>
+
+</html>
+
+<!-- week is the index in the for loop
+week.color references the dictionary in listweeks 
+python: print(listweeks[week]['color'])-->

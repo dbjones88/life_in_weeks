@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Your life in weeks</title>
+  <link rel="stylesheet" href="{% static 'lifeweeks/form.css' %}">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="inner">
+      <div class="inner-most">
+        <h1>What does your life look like in weeks?</h1>
+        <form value="home" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" class="btn" value="Count the weeks">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>
